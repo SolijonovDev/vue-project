@@ -17,6 +17,7 @@ export default {
     computed: {
     ...mapGetters([
       'getBlogs',
+      "getIsLoadingBlogs"
     ])
   }
 }
@@ -27,7 +28,8 @@ export default {
   <div class="container">
     <div class="contain">
       <h2 class="title">Blogs page</h2>
-      <ul class="items">
+      <h2 v-if="getIsLoadingBlogs">Loading...</h2>
+      <ul v-else class="items" >
         <li class="item" v-for="blog in getBlogs">
         <h4 class="blog_title">Id: {{ blog.id }}</h4>
         <p class="blog_text">Title: {{ blog.title }}</p>
@@ -44,30 +46,25 @@ export default {
 .blogs_page{
   padding: 15px 0;
 }
-
 .title{
   font-size: 36px;
   font-weight: 700;
   margin-bottom: 20px;
 }
-
 .items{
   list-style-type: none;
 }
-
 .item{
   border-radius: 4px;
   margin-bottom: 20px;
   padding: 12px;
   background-color: #fff;
 }
-
 .blog_title{
   font-size: 24px;
   margin-bottom: 15px;
   font-weight: 700;
 }
-
 .blog_text{
   font-size: 16px;
 } 
