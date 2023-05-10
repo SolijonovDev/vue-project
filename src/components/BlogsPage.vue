@@ -1,95 +1,24 @@
 <script>
-const blogs=[
-  {
-    id:1,
-    title:"Hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:2,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:3,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-  {
-    id:4,
-    title:"hello world",
-    text:"Lorem ipsum lorem ipsum lorem ipsum"
-  },
-]
+import { mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     data() {
         return {
             count: 0,
-            blogs
         };
     },
-    methods:{}
+    methods:{
+      ...mapActions(['fetchBlogs'])
+    },
+    async mounted(){
+      this.fetchBlogs();
+    },
+    computed: {
+    ...mapGetters([
+      'getBlogs',
+    ])
+  }
 }
 </script>
 
@@ -99,9 +28,11 @@ export default {
     <div class="contain">
       <h2 class="title">Blogs page</h2>
       <ul class="items">
-        <li class="item" v-for="blog in blogs">
-        <h4 class="blog_title">{{ blog.title }}</h4>
-        <p class="blog_text">{{ blog.text }}</p>
+        <li class="item" v-for="blog in getBlogs">
+        <h4 class="blog_title">Id: {{ blog.id }}</h4>
+        <p class="blog_text">Title: {{ blog.title }}</p>
+        <p class="blog_text">UserId: {{ blog.userId }}</p>
+        <p class="blog_text">Completed: {{ blog.completed }}</p>
         </li>
       </ul>
     </div>

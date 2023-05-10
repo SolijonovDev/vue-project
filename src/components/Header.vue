@@ -12,7 +12,7 @@
         <button @click="$router.push('/blogs')">Blogs</button>
        </li>
        <li class="item">
-        <button @click="$router.push('/news')">News</button>
+        <button @click="$router.push('/posts')">Posts</button>
        </li>
      </ul>
     </nav>
@@ -36,31 +36,25 @@
   display: flex;
   align-items: center;
 }
-
 .nav{
   margin-left: auto;
  }
-
  .menu{
   display: flex;
   align-items: center;
   list-style-type: none;
 }
-
 .item{
   font-size: 18px;
   font-weight: 500;
   cursor: pointer;
 }
-
 .item button{
   background-color: transparent;
   color:#000;
   font-size: 18px;
 }
-
 .item:not(:last-child){
   margin-right: 15px;
 }
-
 </style>
