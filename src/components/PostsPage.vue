@@ -10,7 +10,7 @@ export default {
       this.fetchPosts();
     },
     computed:{
-       ...mapGetters(['getPosts',"getIsLoadingPosts"])
+       ...mapGetters(['getPosts'])
     }
 }
 </script>
@@ -18,9 +18,7 @@ export default {
 <template>
  <div class="home_page">
   <div class="container">
-    <h2 class="title">Posts page</h2>
-    <h2 v-if="getIsLoadingPosts">Loading ...</h2>
-    <ul v-else>
+    <ul>
       <li v-for="post in getPosts" key="post.id">
       <div class="post">
         <p>{{ post.id }}</p>
@@ -37,10 +35,7 @@ export default {
 .home_page{
   padding: 15px 0;
 }
-.title{
- font-size: 36px;
- margin-bottom: 20px;
-}
+
 .post{
   width: 100%;
   padding: 15px;
